@@ -9,14 +9,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final TextEditingController _username = TextEditingController();
+  final TextEditingController _username =
+      TextEditingController(); // Controllers per poder gestionar el textfields i poder emplear o indicar els seus valors.
   final TextEditingController _password = TextEditingController();
 
-  bool mirarvalor = false;
+  bool mirarvalor = false; // Variable que es el valor de el checkbox.
   @override
   Widget build(BuildContext context) {
-    _getCredential();
+    _getValor();
     return Scaffold(
+      // App bar de la pagina
       appBar: AppBar(
         title: const Text('Home'),
         centerTitle: true,
@@ -27,11 +29,19 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Imatge que es veu al principi de l'aplicació
+            const CircleAvatar(
+              backgroundImage: AssetImage('assets/loginIcon.png'),
+              radius: 100,
+            ),
+            const Divider(),
             const Text(
+              // Texte de login
               'Login',
               style: TextStyle(fontSize: 25),
             ),
             const Divider(),
+            // Primer textfield en el cual introduirem el nom de usuari
             TextField(
               controller: _username,
               onChanged: (value) {
@@ -46,6 +56,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const Divider(),
+            // TextField en el cual introduirem la contrasenya de l'usuari.
             TextField(
               controller: _password,
               obscureText: true,
@@ -62,6 +73,7 @@ class _HomePageState extends State<HomePage> {
             ),
             const Divider(),
             CheckboxListTile(
+              // CheckBox que si esta activda guardara els valors de els textfields.
               value: mirarvalor,
               title: const Text('Recordarme'),
               controlAffinity: ListTileControlAffinity.leading,
@@ -70,15 +82,15 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             const Divider(),
-            _botons(context)
+            _boto(context)
           ],
         ),
       ),
     );
   }
 
-  _botons(BuildContext context) {
-    // Metode de els dos botons que a la hora de pitjar enviar si els un de els dos textFields esta buid sortira un Alert que mos avisara.
+  // Metode que empleam per crear el boto.
+  _boto(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -87,9 +99,11 @@ class _HomePageState extends State<HomePage> {
           child: ElevatedButton(
             onPressed: (() {
               if (_username.text.length != 0 && _password.text.length != 0) {
+                // Si els controlles no estan buids ens enviara a la pagina 'Loged'.
                 Navigator.pushNamedAndRemoveUntil(
                     context, 'Loged', ((route) => false));
               } else {
+                // Si algun esta buid ens monstrara aquest alert dialog.
                 showDialog(
                   context: context,
                   builder: ((context) => AlertDialog(
@@ -115,17 +129,17 @@ class _HomePageState extends State<HomePage> {
   }
 
   _onChanged(bool value) async {
-    // Metode que el que fa es mirar el valor del checkbox y li asigna a la variable mirarvalor i a las preferences el valors de el controlles.
+    // Metode que el que fa es mirar el valor del checkbox i quan canvia li asigna a la variable mirarvalor i a las preferences el valors de el controllers.
     setState(() {
       mirarvalor = value;
       Preferences.checkValue = mirarvalor;
       Preferences.usuari = _username.text;
       Preferences.contrasena = _password.text;
-      _getCredential();
+      _getValor();
     });
   }
 
-  _getCredential() async {
+  _getValor() async {
     // Aquest metode el que fa es segons el valor que tengui mirar valor, es guardaran els camps o no fent com un especie de recordatori per no tenir que tornar a intorduir els camps.
     setState(() {
       mirarvalor = Preferences

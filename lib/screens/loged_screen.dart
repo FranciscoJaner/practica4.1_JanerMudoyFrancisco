@@ -8,23 +8,22 @@ class LogedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // AppBar de la pagina
       appBar: AppBar(
         title: const Text('Informació'),
         centerTitle: true,
       ),
-      drawer: const SideMenu(),
+      drawer: const SideMenu(), // Widget que ens crea el menu.
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
             child: Text(
+              // Texte avon es monstra el nom de l'usuari per sebre que esteim logeats.
               'Benvingut ${Preferences.usuari}',
-              style: TextStyle(fontSize: 30),
+              style: const TextStyle(fontSize: 30),
             ),
           ),
-          Center(
-            child: Text(''),
-          )
         ],
       ),
     );

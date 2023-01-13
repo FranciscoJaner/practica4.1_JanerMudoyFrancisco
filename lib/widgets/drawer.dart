@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:practica_franciscojaner/preferences/preferences.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({Key? key}) : super(key: key);
@@ -12,7 +11,8 @@ class SideMenu extends StatelessWidget {
         children: [
           const _DrawerHeader(),
           ListTile(
-            leading: const Icon(Icons.settings_outlined),
+            // Valor de el menu que ens torna a la pagina 'Loged'.
+            leading: const Icon(Icons.info),
             title: const Text('Informació'),
             onTap: () {
               Navigator.pop(context);
@@ -20,6 +20,7 @@ class SideMenu extends StatelessWidget {
             },
           ),
           ListTile(
+            // Valor de el menu que ens torna a la pagina 'Settings'.
             leading: const Icon(Icons.settings_outlined),
             title: const Text('Configuració'),
             onTap: () {
@@ -28,6 +29,7 @@ class SideMenu extends StatelessWidget {
             },
           ),
           ListTile(
+            // Valor de el menu que ens torna a la pagina 'Home'.
             leading: const Icon(Icons.close),
             title: const Text('Tencar Sessio'),
             onTap: () {
@@ -41,6 +43,7 @@ class SideMenu extends StatelessWidget {
   }
 }
 
+// Classe que ens coloca la imatge del menu.
 class _DrawerHeader extends StatelessWidget {
   const _DrawerHeader({
     Key? key,
@@ -51,8 +54,9 @@ class _DrawerHeader extends StatelessWidget {
     return DrawerHeader(
       child: Container(),
       decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/menu-img.jpg'), fit: BoxFit.cover)),
+        image: DecorationImage(
+            image: AssetImage('assets/menu-img2.jpg'), fit: BoxFit.cover),
+      ),
     );
   }
 }

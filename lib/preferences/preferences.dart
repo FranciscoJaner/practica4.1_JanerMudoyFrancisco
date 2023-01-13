@@ -7,6 +7,8 @@ class Preferences {
   static String _usuari = '';
   static String _contrasena = '';
   static int _genere = 1;
+  static bool _isDarkMode = false;
+
   static bool _checkvalue = false;
 
   static Future init() async {
@@ -15,6 +17,15 @@ class Preferences {
 
   static Future clear() async {
     _preferences.clear();
+  }
+
+  static bool get isDarkMode {
+    return _preferences.getBool('darkmode') ?? _isDarkMode;
+  }
+
+  static set isDarkMode(bool value) {
+    _isDarkMode = value;
+    _preferences.setBool('darkmode', value);
   }
 
   static bool get checkValue {
