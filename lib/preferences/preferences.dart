@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Preferences {
-  static late SharedPreferences _preferences;
+  static late SharedPreferences
+      _preferences; // Clase avon tenim les preferences i que conte tots el setters i getter per poder emplear-ho avon o necessitem.
 
   static String _usuari = '';
   static String _contrasena = '';

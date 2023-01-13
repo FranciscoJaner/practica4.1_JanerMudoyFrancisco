@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                   context: context,
                   builder: ((context) => AlertDialog(
                         title: const Text('Avis'),
-                        content: const Text('Contrasenya o usuari incorrectes'),
+                        content: const Text('Contrasenya o usuari buits'),
                         actions: [
                           ElevatedButton(
                             onPressed: (() {

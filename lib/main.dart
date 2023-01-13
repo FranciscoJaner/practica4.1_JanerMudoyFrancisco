@@ -13,7 +13,7 @@ void main() async {
       ChangeNotifierProvider(
         create: (_) => ThemeProvider(
             isDarkMode: Preferences
-                .isDarkMode), // Provaider per controlar l'estat de el tema oscur a la aplicaciós
+                .isDarkMode), // Provaider per controlar l'estat de el tema oscur a la aplicació
       )
     ],
     child: MyApp(),

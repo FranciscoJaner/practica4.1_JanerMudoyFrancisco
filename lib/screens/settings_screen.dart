@@ -16,7 +16,7 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // AppBar de l'aplicació
+        // AppBar de la pagina
         appBar: AppBar(
           title: const Text('Settings'),
         ),
@@ -36,7 +36,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 SwitchListTile(
                     // Widget el qual canvia el tema de la aplicacio de clar a obscur.
                     value: Preferences.isDarkMode,
-                    title: const Text('Mode obscur'),
+                    title: const Text('Mode oscur'),
                     onChanged: (value) {
                       Preferences.isDarkMode = value;
                       final themeProvider =
@@ -59,6 +59,21 @@ class _SettingsPageState extends State<SettingsPage> {
                     decoration: const InputDecoration(
                         labelText: 'Canviar Nom',
                         helperText: 'Nom de l\'usuari'),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: TextFormField(
+                    // Text field que el que fa es canviar el valor de la preference de usuari per el que introduim, basicament es un canvi de nom.
+                    initialValue: Preferences.contrasena,
+                    obscureText: true,
+                    onChanged: (value) {
+                      Preferences.contrasena = value;
+                      setState(() {});
+                    },
+                    decoration: const InputDecoration(
+                        labelText: 'Canviar contrasenya',
+                        helperText: 'Contrasenya'),
                   ),
                 )
               ],
